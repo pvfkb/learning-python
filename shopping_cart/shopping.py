@@ -6,20 +6,33 @@ def get_order():
 	item = line[2:]
 
 	return (command, item)
+
+def add_to_cart(item, cart):
+	if item not in cart:
+		cart[item]=0
+	cart[item] += 1	
+
+def del_from_cart(item, cart):
+	if item in cart:
+		if cart[item] > 1:
+			cart[item] -= 1
+		else:
+			del cart[item]
+
 def process_order(order, cart):
 	(command, item) = order
 
 	if command == "a":
-		cart.add(item)
+		add_to_cart(item, cart)
 	elif command == "d" and item in cart:
-		cart.remove(item)
+		del_from_cart(item, cart)
 	elif command == "q":
 		return False
 
 	return True
 
 def go_shopping():
-	cart = set()
+	cart = dict()
 
 	while True:
 		order = get_order()

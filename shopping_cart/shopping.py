@@ -1,3 +1,6 @@
+# test github
+
+
 def get_order():
 	print("[command] [item] (command is a to add, d to delete, q to quit)")
 	line = input()
@@ -7,10 +10,12 @@ def get_order():
 
 	return (command, item)
 
+
 def add_to_cart(item, cart):
 	if item not in cart:
 		cart[item]=0
 	cart[item] += 1	
+
 
 def del_from_cart(item, cart):
 	if item in cart:
@@ -18,6 +23,7 @@ def del_from_cart(item, cart):
 			cart[item] -= 1
 		else:
 			del cart[item]
+
 
 def process_order(order, cart):
 	(command, item) = order
@@ -30,6 +36,7 @@ def process_order(order, cart):
 		return False
 
 	return True
+
 
 def go_shopping():
 	cart = dict()
